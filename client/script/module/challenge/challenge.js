@@ -7,7 +7,7 @@ CRUD for challenges
 
 angular.module('App.challenge', [])
 
-.controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', 'addAlertService','$state', function(createChallengeService, challengeFactory, braintreeFactory, addAlertService, $state, $scope) {
+.controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', 'addAlertService','$state', 'spinnerService', function(createChallengeService, challengeFactory, braintreeFactory, addAlertService, $state, $scope, spinnerService) {
 
   var self = this;
 
@@ -20,7 +20,7 @@ angular.module('App.challenge', [])
   */
   self.tabs = [true, false, false];
   self.currentTab = 0;
-  
+
   /* Next Step */
   self.nextTab = function(){
     if (self.currentTab < 2) {
@@ -47,11 +47,14 @@ angular.module('App.challenge', [])
   self.save = function(){
     // console log
     console.log('create challenge... : ', createChallengeService.challenge);
+    // start spinner
+    spinnerService.show('challengeSpinner');
     addAlertService.addAlert("success","Challenge created");
     // factory function
     challengeFactory.createChallenge(createChallengeService.challenge)
       .then(function(data){
         console.log('created challenge : ', data);
+        spinnerService.hide('challengeSpinner');
         //create alert
         // addAlertService.addAlert();
       })
@@ -218,7 +221,7 @@ angular.module('App.challenge', [])
     if (radioButtonService.radio === null) {
       console.log('charity amount not selected...');
       // display alert/message telling user to fix the problem
-    } 
+    }
     // save locally
     self.charityAmount = radioButtonService.radio;
     // save to service object

@@ -40,7 +40,6 @@ angular.module('App.profile', [])
 
   // Toggle spinner (testing function)
   self.toggleSpinner = function(){
-     spinnerService.show('profileSpinner'); // to show
      spinnerService.hide('profileSpinner'); // to hide
 
   };
