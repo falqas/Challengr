@@ -1,6 +1,6 @@
-<!-- 
+<!--
 
-profile.html 
+profile.html
 manage payments, signout, manage user information
 
 -->
@@ -45,6 +45,10 @@ manage payments, signout, manage user information
 </uib-tabset>
 
 
+<div ng-controller="profileCtrl">
+  <spinner name="profileSpinner" img-src="image/spinner.gif" show="true"></spinner>
+  <button ng-click="toggleSpinner()">toggleSpinner</button>
+</div>
 
 
 

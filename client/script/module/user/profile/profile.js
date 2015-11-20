@@ -7,7 +7,7 @@ sets up authorization controller
 
 angular.module('App.profile', [])
 
-.controller('profileCtrl', ['authFactory', 'braintreeFactory', function(authFactory, braintreeFactory) {
+.controller('profileCtrl', ['authFactory', 'braintreeFactory', 'spinnerService', function(authFactory, braintreeFactory, spinnerService) {
 
   var self = this;
 
@@ -18,7 +18,7 @@ angular.module('App.profile', [])
 
   // Update user information
   self.updateUser = function(){
-    
+
   };
 
   // Get all transaction history for user
@@ -36,6 +36,13 @@ angular.module('App.profile', [])
   // Sign user out
   self.signout = function(){
     authFactory.signout();
+  };
+
+  // Toggle spinner (testing function)
+  self.toggleSpinner = function(){
+     spinnerService.show('profileSpinner'); // to show
+     spinnerService.hide('profileSpinner'); // to hide
+
   };
 
 }]);

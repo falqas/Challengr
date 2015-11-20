@@ -29,7 +29,8 @@ angular.module('App', [
   'App.createChallengeService',
   'App.addAlertService',
   'App.alertController',
-  'App.s3Factory'
+  'App.s3Factory',
+  'angularSpinners',
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$momentProvider', function ($stateProvider, $urlRouterProvider, $httpProvider, $momentProvider) {
